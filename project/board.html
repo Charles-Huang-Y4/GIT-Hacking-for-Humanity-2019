@@ -241,6 +241,12 @@
                 closeAllLists(e.target);
             });
         }
+
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
     </script>
 
 </head>
@@ -302,10 +308,10 @@
                             <td>12/15</td>
                         </tr>
 
-                        <tr>
+                        <tr class='clickable-row' data-href="board2.html">
                             <td>33</td>
                             <td>afs1234</td>
-                            <td><a id="textClick" href="board2.html">Anyone to work at dt?</a></td>
+                            <td>Anyone to work at dt?</td>
                             <td>Granville street</td>
                             <td>1st June, 1:00PM (2 hours)</td>
                             <td>3/6</td>
