@@ -1,6 +1,6 @@
 # Girls in Tech - Hacking for Humanity(2019)
 
-**Challenge Statement:** \nHow might we use technology to educate and connect people to the natural world?
+**Challenge Statement:** How might we use technology to educate and connect people to the natural world?
 
 ***Scenario 1:** Demonstrate how can we use technology to raise awareness and get more mainstream attention to green initiatives?*
 
