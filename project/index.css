@@ -57,18 +57,19 @@ body {
   font-size: 38pt;
 }
 
+.secondContainer {
+  overflow: hidden;
+  height: 400px;
+}
+
 #secondBGdiv {
-  height: 90%;
-  width: 90%;
-  object-fit: contain;
-  padding: 0;
+  height: auto;
+  width: 100%;
 }
 
 #secondBGdiv2 {
-  height: 105%;
-  width: 105%;
-  object-fit: contain;
-  padding:0 30px 0 0;
+  height: auto;
+  width: 100%;
 }
 
 /* #secondPara {
@@ -94,18 +95,17 @@ body {
   margin: 100px 0 0 0;
 }
 
-
 #thirdPara {
   font-size: 32pt;
   text-align: center;
   line-height: 70px;
-  letter-spacing: 8px;
+  letter-spacing: 5px;
   color: black;
   margin: 100px 0 0 0;
 }
 
 .fourthContainer {
-  margin: 100px 0 0 0;
+  margin: 150px 0 0 0;
   background-color: #f8f8f8;
   height: 800px;
 }
