@@ -21,7 +21,7 @@
         @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
         body {
-            font-family: Montserrat, Arial, Helvetica, sans-serif
+            font-family: Montserrat,Arial, Helvetica, sans-serif 
         }
 
         body>div {
@@ -68,11 +68,9 @@
         }
 
         .triangle {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             opacity: 0.5;
-            padding-left: 2px;
-            padding-right: 2px;
         }
 
         .triangle:hover {
@@ -86,7 +84,7 @@
         .navbar-nav li a {
             line-height: 55px;
             font-size: 1.2em;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         .modal-backdrop {
@@ -115,8 +113,8 @@
         }
 
         .nav-item {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         .navbar-brand {
@@ -130,115 +128,120 @@
             padding-bottom: 15px;
         }
 
-        #newPostBtn {
-            margin: 10px 0 10px 0;
-        }
-
-        .tableTitle th {
+        .tableTitle th{
             text-align: center;
         }
-        #boardClick a {
-            text-decoration: none;
+        #newPostBtn {
+            margin: 20px 0 20px 0;
+        }
+        #textClick {
             color: #333;
+            text-decoration: none;
         }
     </style>
     <script>
-    function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
-    var currentFocus;
-    /*execute a function when someone writes in the text field:*/
-    inp.addEventListener("input", function(e) {
-        var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
-        closeAllLists();
-        if (!val) { return false;}
-        currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "autocomplete-list");
-        a.setAttribute("class", "autocomplete-items");
-        /*append the DIV element as a child of the autocomplete container:*/
-        this.parentNode.appendChild(a);
-        /*for each item in the array...*/
-        for (i = 0; i < arr.length; i++) {
-          /*check if the item starts with the same letters as the text field value:*/
-          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-            /*create a DIV element for each matching element:*/
-            b = document.createElement("DIV");
-            /*make the matching letters bold:*/
-            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += arr[i].substr(val.length);
-            /*insert a input field that will hold the current array item's value:*/
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            /*execute a function when someone clicks on the item value (DIV element):*/
-            b.addEventListener("click", function(e) {
-                /*insert the value for the autocomplete text field:*/
-                inp.value = this.getElementsByTagName("input")[0].value;
-                /*close the list of autocompleted values,
-                (or any other open lists of autocompleted values:*/
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
                 closeAllLists();
+                if (!val) {
+                    return false;
+                }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
             });
-            a.appendChild(b);
-          }
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
         }
-    });
-    /*execute a function presses a key on the keyboard:*/
-    inp.addEventListener("keydown", function(e) {
-        var x = document.getElementById(this.id + "autocomplete-list");
-        if (x) x = x.getElementsByTagName("div");
-        if (e.keyCode == 40) {
-          /*If the arrow DOWN key is pressed,
-          increase the currentFocus variable:*/
-          currentFocus++;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 38) { //up
-          /*If the arrow UP key is pressed,
-          decrease the currentFocus variable:*/
-          currentFocus--;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 13) {
-          /*If the ENTER key is pressed, prevent the form from being submitted,*/
-          e.preventDefault();
-          if (currentFocus > -1) {
-            /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
-          }
-        }
-    });
-    function addActive(x) {
-      /*a function to classify an item as "active":*/
-      if (!x) return false;
-      /*start by removing the "active" class on all items:*/
-      removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = (x.length - 1);
-      /*add class "autocomplete-active":*/
-      x[currentFocus].classList.add("autocomplete-active");
-    }
-    function removeActive(x) {
-      /*a function to remove the "active" class from all autocomplete items:*/
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
-      }
-    }
-    function closeAllLists(elmnt) {
-      /*close all autocomplete lists in the document,
-      except the one passed as an argument:*/
-      var x = document.getElementsByClassName("autocomplete-items");
-      for (var i = 0; i < x.length; i++) {
-        if (elmnt != x[i] && elmnt != inp) {
-          x[i].parentNode.removeChild(x[i]);
-        }
-      }
-    }
-    /*execute a function when someone clicks in the document:*/
-    document.addEventListener("click", function (e) {
-        closeAllLists(e.target);
-    });
-  }</script>
+    </script>
 
 </head>
 
@@ -246,7 +249,7 @@
     <nav class="navbar navbar-default" style="height: 85px;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" style="font-size: 22pt;" href="#">EcoSave</a>
+                <a class="navbar-brand" style="font-size:22pt" href="index.html">EcoBox</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a href="index.html">Home</a></li>
@@ -263,10 +266,9 @@
             <div id="search" class="col-sm-12 text-left">
                 <input id="searchBox" class="form-control" type="text" placeholder="search..." />
                 <input id="searchBtn" class="btn btn-info btn-lg" type="button" value="Search">
-
             </div><br><br><br>
-            <button id="newPostBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                data-target="#myModal">New Post</button>
+            <button id="newPostBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New
+                    Post</button>
             <div id="createBtn">
             </div><br>
             <div id="table">
@@ -303,7 +305,7 @@
                         <tr>
                             <td>33</td>
                             <td>afs1234</td>
-                            <td id="boardClick"><a href="board2.html">Anyone to work at dt?</a></td>
+                            <td><a id="textClick" href="board2.html">Anyone to work at dt?</a></td>
                             <td>Granville street</td>
                             <td>1st June, 1:00PM (2 hours)</td>
                             <td>3/6</td>
@@ -380,50 +382,11 @@
                             src="https://cdn2.iconfinder.com/data/icons/love-nature/600/green-Leaves-nature-leaf-tree-garden-environnement-512.png"
                             width="30px" height="30px">
                     </div>
-                    <div class="col-sm-12 text-center" style="margin-top: 20px;">
-                        <div class="col-sm-3 text-right">
-                            <img src="https://image.flaticon.com/icons/svg/67/67347.svg" width="30px" height="30px">
-                        </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">Location</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                                <form autocomplete="off" action="/action_page.php">
-                                    <div class="autocomplete" style="width:30px;">
-                                      <input id="myInput" type="text" name="where" placeholder="Location" style="height: 30px;">
-                                    </div>
-                                </form>
-                                    <script>
-                                        /*An array containing all the country names in the world:*/
-                                        var place = ["White Rock", "Grouse Mountain", "Granville street", "Burnaby", "Metrodown", "Richmond"];
-                                        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-                                        autocomplete(document.getElementById("myInput"), place);
-                                    </script>
-                                
-                        </div>   
-                    </div> 
-                    <div class="col-sm-12 text-left" style="margin-top: 20px;">
-                        <div class="col-sm-3 text-right">
-                            <img src="https://www0.sun.ac.za/helderberg/wp-content/uploads/2017/03/calendar.png"width="30px" height="30px">
-                        </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">Date</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                            <input type="date">
-                            <input type="time">
-                        </div>   
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">Title</h4>
                     </div>
-                    <div class="col-sm-12 text-left" style="margin-top: 20px;">
-                        <div class="col-sm-3 text-right">
-                            <img src="https://image.flaticon.com/icons/png/512/33/33308.png" width="30px" height="30px">
-                        </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">People</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">   
-                            <input type="number" name="quantity" min="1" max="10" style="height: 30px; margin-top:5px;" ><br>
-                        </div>   
+                    <div class="col-sm-6 text-left">
+                        <input type="text" name="title" style="height: 30px;">
                     </div>
                 </div>
                 <div class="col-sm-12 text-center" style="margin-top: 20px;">
@@ -434,7 +397,21 @@
                         <h4 class="category">Location</h4>
                     </div>
                     <div class="col-sm-6 text-left">
-                        <input type="text" name="where" style="height: 30px;">
+                        <form autocomplete="off" action="/action_page.php">
+                            <div class="autocomplete" style="width:30px;">
+                                <input id="myInput" type="text" name="where" placeholder="Location"
+                                    style="height: 30px;">
+                            </div>
+                        </form>
+                        <script>
+                            /*An array containing all the country names in the world:*/
+                            var place = ["White Rock", "Grouse Mountain", "Granville street", "Burnaby", "Metrodown",
+                                "Richmond"
+                            ];
+                            /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+                            autocomplete(document.getElementById("myInput"), place);
+                        </script>
+
                     </div>
                 </div>
                 <div class="col-sm-12 text-left" style="margin-top: 20px;">
@@ -446,59 +423,46 @@
                         <h4 class="category">Date</h4>
                     </div>
                     <div class="col-sm-6 text-left">
-                        <div id="box1">
-                            <select name="month">
-                                <option value="month"> Month</option>
-                                <option value="jan"> Jan</option>
-                                <option value="feb"> Feb</option>
-                            </select>
-                            <select name="day">
-                                <option value="day"> Day</option>
-                            </select>
-                            <select name="year">
-                                <option value="year"> Year</option>
-                            </select>
-                            <br>
-                        </div>
-                        <div id="box2">
-                            <select name="hour">
-                                <option value="hour"> HH</option>
-                                <option value="jan"> Jan</option>
-                                <option value="feb"> Feb</option>
-                            </select>
-                            <select name="MM">
-                                <option value="MM"> MM
-                                <option value="00">00</option>
-                                <option value="15">15</option>
-                                <option value="30">30</option>
-                                <option value="45">45</option>
-                                </option>
-                            </select>
-                            <select name="AMPM">
-                                <option value="AMPM"> AM-PM
-                                <option value="am">AM</option>
-                                <option value="pm">PM</option>
-                                </option>
-                            </select><br>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                            <textarea cols="25" rows="4" style= "margin-top:5px;" ></textarea>
-                        </div>   
-                    </div>    
+                        <input type="date">
+                        <input type="time">
+                    </div>
+                </div>
+                <div class="col-sm-12 text-left" style="margin-top: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <img src="https://image.flaticon.com/icons/png/512/33/33308.png" width=" 30px" height="30px">
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">People</h4>
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <input type="number" name="quantity" min="1" max="10" style="height: 30px; margin-top:5px;"><br>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-left" style="margin-top: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <img src="https://www.eastchapelhillobserver.com/wp-content/uploads/2015/02/black-pencil-vector-KTnez4BEc.png" width="
+                            30px" height="30px">
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">Description</h4>
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <textarea cols="25" rows="4" style="margin-top:5px;"></textarea>
+                    </div>
+                </div>
                 <div class="col-sm-12" text-center style="margin-top: 20px;">
                     <button type='submit' class="btn btn-info btn-lg">Create</button>
                     <button type='submit' id="buttonClose" class="btn btn-info btn-lg">Close</button>
                 </div>
             </div>
         </div>
-        <!-- <script>
+        <script>
             $(document).ready(function () {
                 $('#buttonClose').click(function () {
-                    $('#myModal').fadeOut();
-                    $('.modal-backdrop').fadeOut();
+                    window.open('board.html', '_self');
                 });
             });
-        </script> -->
+        </script>
 
 </body>
 
