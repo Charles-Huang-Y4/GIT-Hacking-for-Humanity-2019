@@ -1,107 +1,246 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
 
-        </title>
-        <style>
-            .category {
-                font-weight: bold;
-            }
-            #map {
-                width:100%;
+<head>
+    <title>Result</title>
+    <meta charset="utf-8">
 
-                margin-bottom:50px;
-            }
-            li a{
-                margin-left:50px;
-                line-height:55px;
-            }
-            .modal-backdrop{
-            margin:0px;
-            }
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-            .modal-content {
-                width: 800px;
-                height:800px;
-                margin:0 auto;
-                margin-top:50px;
-            }
-            .container text-center {
-                width:100%;
-            }
-            .container text-center h2 {
-                text-align: center;
-                width:100%;
-                height:20px;
-            }
-        </style>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    </head>
-    <body>
-        <nav class="navbar navbar-default" style="height: 85px;">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                <a class="navbar-brand" href="#">ECO-FRIENDLY</a>
-                </div>
-                <ul class="nav navbar-nav navbar-center">
-                    <li><a href="#" style="line-height: 55px">Home</a></li>
-                    <li><a href="board.html" style="line-height: 55px">Board</a></li>
-                    <li class="active"><a href="#" style="line-height: 55px">Result</a></li>
-                    <li><a href="#" style="line-height: 55px">Signup</a></li>
-                </ul>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+        body {
+            font-family: Montserrat, Arial, Helvetica, sans-serif
+        }
+
+        .category {
+            font-weight: bold;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+
+            margin-bottom: 50px;
+        }
+
+        .navbar-nav li a {
+            line-height: 55px;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+        }
+
+        .nav-item {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .navbar-brand {
+            line-height: 55px;
+            letter-spacing: 5px;
+        }
+
+        .modal-backdrop {
+            margin: 0px;
+        }
+
+        .modal-content {
+            width: 800px;
+            height: 800px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .container text-center {
+            width: 100%;
+        }
+
+        .container text-center h2 {
+            text-align: center;
+            width: 100%;
+            height: 20px;
+        }
+
+        #vancouverInfo {
+            position: absolute;
+            top: 100px;
+            left: 280px;
+            background-color: rgb(248, 239, 110);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border: 1px solid black;
+        }
+
+        #northvancouverInfo {
+            position: absolute;
+            top: 70px;
+            left: 370px;
+            background-color: rgb(248, 239, 110);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border: 1px solid black;
+        }
+
+        #burnabyInfo {
+            position: absolute;
+            top: 240px;
+            left: 450px;
+            background-color: rgb(248, 239, 110);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border: 1px solid black;
+        }
+
+        #newwestminsterInfo {
+            position: absolute;
+            top: 290px;
+            left: 600px;
+            background-color: rgb(248, 239, 110);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border: 1px solid black;
+        }
+
+        #southvancouverInfo {
+            position: absolute;
+            top: 180px;
+            left: 100px;
+            background-color: rgb(248, 239, 110);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border: 1px solid black;
+        }
+
+        .popover-content,
+        .popover-title {
+            color: black;
+            width: 153px;
+            text-align: center;
+        }
+        
+        .text-center h2 {
+            letter-spacing: 2px;
+            font-weight: 400;
+            padding-bottom: 15px;
+        }
+        
+        .mainContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default" style="height: 85px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="font-size:22pt" href="#">EcoSave</a>
             </div>
-        </nav>
-        <div class="container text-center">
-                <h2>This is the result of the campaign!</h2><hr><br>
-                <div class="row">     
-                    <div id="category"class="col-sm-7 text-left">
-                        <img id="map" src="pic/result.jpg" class="img-thumbnail" alt="Cinque Terre">
-    
-                    </div>
-                    <div class="col-sm-4 text-center">
-                        <h2>Trash bags collected</h2><br>
-                        <h4>665 trash bag</h4><br>
-                        
-                        <h2>Saved money..</h2><br>
-                        <h4>$500,000</h4><br>
-
-                        <h4 style="font-weight: bold">You participated on this campaign <br>3 times!</h4><br>
-
-                        <div>
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Print Certificates</button>
-                        </div>
-                    </div>
-                    
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="board.html">Board</a></li>
+                <li class="nav-item"><a href="#">Result</a></li>
+                <li class="nav-item"><a href="#">Signup</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container text-center">
+        <h2>Some Results Of The Campaign!</h2>
+        <hr><br>
+        <div class="row mainContainer">
+            <div id="category" class="col-sm-7 text-left">
+                <img id="map" src="pic/result.jpg" class="img-thumbnail" alt="Cinque Terre">
+                <div id="vancouverInfo">
+                    <a href="#" style="color:black" data-toggle="popover" title="Vancouver Downtown"
+                        data-content="Value : $3,600 Collected Bag : 150">150</a>
+                </div>
+                <div id="northvancouverInfo">
+                    <a href="#" style="color:black" data-toggle="popover" title="North Vancouver"
+                        data-content="Value : $1,680  Collected Bag : 70">70</a>
+                </div>
+                <div id="burnabyInfo">
+                    <a href="#" style="color:black" data-toggle="popover" title="Burnaby"
+                        data-content="Value : $1,608  Collected Bag : 67">67</a>
+                </div>
+                <div id="newwestminsterInfo">
+                    <a href="#" style="color:black" data-toggle="popover" title="New Westminster"
+                        data-content="Value : $2,232  Collected Bag : 93">93</a>
+                </div>
+                <div id="southvancouverInfo">
+                    <a href="#" style="color:black" data-toggle="popover" title="South Vancouver"
+                        data-content="Value : $1,224  Collected Bag : 51">51</a>
                 </div>
             </div>
-            <div class="modal fade" id="myModal" role="dialog" style="margin:0px;">
-                <div class="modal-content"> 
-                    <div class="container text-center" style="width:100%;">
-                        <h2 style="margin-top: 50px">Print your Certificate!</h2><hr><br>
-                    <div class="col-sm-12" text-center style="margin-top: 20px;">
-                        <img src="pic/certificate2.jpg" alt="certificates">
-                    </div>                
-                    <div class="col-sm-12" text-center style="margin-top: 20px;">
-                        <button type='submit' class="btn btn-info btn-lg">Print</button>
-                        <button type='submit' id="buttonClose" class="btn btn-info btn-lg">Close</button>
-                    </div>        
+            <div class="col-sm-4 text-center">
+                <h2>Trash bags collected</h2><br>
+                <h4>431 trash bag</h4><br>
+
+                <h2>Saved money..</h2><br>
+                <h4>$10,344</h4><br>
+
+                <h4 style="font-weight: bold">You participated on this campaign <br>3 times!</h4><br>
+
+                <div>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Print
+                        Certificates</button>
                 </div>
             </div>
-            <script>
-                $(document).ready(function() {
-                    $('#buttonClose').click(function() {
-                        $('#myModal').fadeOut();
-                        $('.modal-backdrop').fadeOut();
-                    });
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog" style="margin:0px;">
+        <div class="modal-content">
+            <div class="container text-center" style="width:100%;">
+                <h2 style="margin-top: 50px">Print your Certificate!</h2>
+                <hr><br>
+                <div class="col-sm-12" text-center style="margin-top: 20px;">
+                    <img src="pic/certificate2.jpg" alt="certificates">
+                </div>
+                <div class="col-sm-12" text-center style="margin-top: 20px;">
+                    <button type='submit' class="btn btn-info btn-lg">Print</button>
+                    <button type='submit' id="buttonClose" class="btn btn-info btn-lg">Close</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('#buttonClose').click(function () {
+                    $('#myModal').fadeOut();
+                    $('.modal-backdrop').fadeOut();
                 });
-            </script>
-    </body>
+                $('[data-toggle="popover"]').popover();
+            });
+        </script>
+</body>
+
 </html>
