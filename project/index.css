@@ -1,6 +1,9 @@
 body {
-  font-family: Montserrat, Courier, monospace
+  font-family: Montserrat, Courier, monospace;
+  max-width: 100%;
+  overflow-x: hidden;
 }
+
 .navbar-default {
   border-radius: 0;
   height: 85px;
@@ -38,6 +41,7 @@ body {
   letter-spacing: 4px;
 
 }
+
 #firstBGdiv {
   height: 100%;
   width: 100%;
@@ -84,14 +88,14 @@ body {
 #secondPicContainer {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   margin: 100px 0 0 0;
 }
 
 #secondPicContainer2 {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   margin: 100px 0 0 0;
 }
 
