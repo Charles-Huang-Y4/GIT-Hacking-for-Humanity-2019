@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Board</title>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -16,7 +17,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
-        body > div {
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+        body {
+            font-family: Montserrat, Arial, Helvetica, sans-serif
+        }
+
+        body>div {
             margin: 1%;
             margin-right: 10%;
             margin-left: 10%;
@@ -26,311 +34,356 @@
             display: flex;
             justify-content: flex-end;
         }
-       
-        #search input{
+
+        #search input {
             height: 50px;
         }
 
         #searchBtn {
-           width: 9%;
+            width: 9%;
         }
 
         #searchBox {
             width: 90%;
-            display:inline-block;
+            display: inline-block;
         }
 
         tr {
             height: 50px;
         }
-    
+
         thead {
             background-color: #E4EFF9;
         }
 
-        #bottom{
+        #bottom {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        #bottom p{
+        #bottom p {
             margin: 0px;
             padding: 7px;
         }
 
-        .triangle{  
-            width: 30px;
-            height: 30px;
+        .triangle {
+            width: 20px;
+            height: 20px;
             opacity: 0.5;
+            padding-left: 2px;
+            padding-right: 2px;
         }
 
-        .triangle:hover{
+        .triangle:hover {
             opacity: 0.7;
         }
 
-        #nextPageBtn{
+        #nextPageBtn {
             transform: rotate(180deg);
         }
-        li a{
-            margin-left:50px;
-            line-height:55px;
+
+        .navbar-nav li a {
+            line-height: 55px;
+            font-size: 1.2em;
+            letter-spacing: 3px;
         }
 
-        .modal-backdrop{
-            margin:0px;
+        .modal-backdrop {
+            margin: 0px;
         }
 
         .modal-content {
             width: 800px;
-            height:600px;
-            margin:0 auto;
-            margin-top:50px;
+            height: 600px;
+            margin: 0 auto;
+            margin-top: 50px;
         }
+
         .container text-center {
-            width:100%;
+            width: 100%;
         }
+
         .container text-center h2 {
             text-align: center;
-            width:100%;
-            height:20px;
+            width: 100%;
+            height: 20px;
         }
+
         .imgTotal {
-            margin-top:5px;
+            margin-top: 5px;
         }
 
+        .nav-item {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
 
+        .navbar-brand {
+            line-height: 55px;
+            letter-spacing: 5px;
+        }
+
+        .text-center h2 {
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        #newPostBtn {
+            margin: 10px 0 10px 0;
+        }
+
+        .tableTitle th {
+            text-align: center;
+        }
+        #boardClick a {
+            text-decoration: none;
+            color: #333;
+        }
     </style>
 
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-default" style="height: 85px;">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand" href="#">ECO-FRIENDLY</a>
+                <a class="navbar-brand" style="font-size: 22pt;" href="#">EcoSave</a>
             </div>
-            <ul class="nav navbar-nav navbar-center">
-                <li><a href="#" style="line-height: 55px">Home</a></li>
-                <li class="active"><a href="#" style="line-height: 55px">Board</a></li>
-                <li><a href="result.html" style="line-height: 55px">Result</a></li>
-                <li><a href="#" style="line-height: 55px">Signup</a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="#">Board</a></li>
+                <li class="nav-item"><a href="result.html">Result</a></li>
+                <li class="nav-item"><a href="#">Signup</a></li>
             </ul>
         </div>
     </nav>
-        <div class="container text-center">
-            <h2>Participate in an Eco-Trip!</h2><hr><br>
-            <div class="row">
-                <div id="search" class="col-sm-12 text-left">
-                    <input id="searchBox" class="form-control" type="text" placeholder="search..." />
-                    <input id="searchBtn" class="btn btn-info btn-lg" type="button" value="Search">
-                </div><br><br><br>
-                <div id="createBtn">
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Post</button>
-                </div><br>
-                <div id="table">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Organizer</th>
-                                <th>Title</th>
-                                <th>Where</th>
-                                <th>When</th>
-                                <th>No.People</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>31</td>
-                                <td>Ecowoman</td>
-                                <td>Trip to White Rock!</td>
-                                <td>White Rock</td>
-                                <td>3rd May, 11:00AM (4 hours)</td>
-                                <td>3/6</td>
-                            </tr>
-        
-                            <tr>
-                                <td>32</td>
-                                <td>LoveNature</td>
-                                <td>Going to Grouse Mountain</td>
-                                <td>Grouse Mt.</td>
-                                <td>3rd May, 11:00AM - 4th May, 8:00 PM (~Days)</td>
-                                <td>12/15</td>
-                            </tr>
-        
-                            <tr>
-                                <td>33</td>
-                                <td>afs1234</td>
-                                <td><a href="board2.html">anyone to work at dt?</a></td>
-                                <td>Granville street</td>
-                                <td>1st June, 1:00PM (2 hours)</td>
-                                <td>3/6</td>
-                            </tr>
+    <div class="container text-center">
+        <h2>Participate in an Eco-Trip!</h2>
+        <hr><br>
+        <div class="row">
+            <div id="search" class="col-sm-12 text-left">
+                <input id="searchBox" class="form-control" type="text" placeholder="search..." />
+                <input id="searchBtn" class="btn btn-info btn-lg" type="button" value="Search">
 
-                            <tr>
-                                <td>34</td>
-                                <td>Jane Doe</td>
-                                <td>Quick Cleanup</td>
-                                <td>Burnaby</td>
-                                <td>10th May, 1:00PM (2 Hours)</td>
-                                <td>4/6</td>
-                            </tr>
+            </div><br><br><br>
+            <button id="newPostBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                data-target="#myModal">New Post</button>
+            <div id="createBtn">
+            </div><br>
+            <div id="table">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="tableTitle">
+                            <th>No.</th>
+                            <th>Organizer</th>
+                            <th>Title</th>
+                            <th>Where</th>
+                            <th>When</th>
+                            <th>No.People</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>31</td>
+                            <td>Ecowoman</td>
+                            <td>Trip to White Rock!</td>
+                            <td>White Rock</td>
+                            <td>3rd May, 11:00AM (4 hours)</td>
+                            <td>3/6</td>
+                        </tr>
 
-                            <tr>
-                                <td>35</td>
-                                <td>John Dough</td>
-                                <td>Cleanup around Metropolis Mall</td>
-                                <td>Metrotown</td>
-                                <td>14th May, 10:00AM (5 Hours)</td>
-                                <td>8/12</td>
-                            </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>LoveNature</td>
+                            <td>Going to Grouse Mountain</td>
+                            <td>Grouse Mt.</td>
+                            <td>3rd May, 11:00AM - 4th May, 8:00 PM (~Days)</td>
+                            <td>12/15</td>
+                        </tr>
 
-                            <tr>
-                                <td>36</td>
-                                <td>Jannette Doh</td>
-                                <td>Clean up at South-Arm</td>
-                                <td>Richmond</td>
-                                <td>14th May, 11:00AM (6 Hours)</td>
-                                <td>2/8</td>
-                            </tr>
+                        <tr>
+                            <td>33</td>
+                            <td>afs1234</td>
+                            <td id="boardClick"><a href="board2.html">Anyone to work at dt?</a></td>
+                            <td>Granville street</td>
+                            <td>1st June, 1:00PM (2 hours)</td>
+                            <td>3/6</td>
+                        </tr>
 
-                            <tr>
-                                <td>37</td>
-                                <td>Bobby Bob Bobbleso</td>
-                                <td>Cleaning BCIT Parking Lots</td>
-                                <td>BCIT Burnaby</td>
-                                <td>19th May, 1:00PM (4 Hours)</td>
-                                <td>6/8</td>
-                            </tr>
+                        <tr>
+                            <td>34</td>
+                            <td>Jane Doe</td>
+                            <td>Quick Cleanup</td>
+                            <td>Burnaby</td>
+                            <td>10th May, 1:00PM (2 Hours)</td>
+                            <td>4/6</td>
+                        </tr>
 
-                            <tr>
-                                <td>38</td>
-                                <td>Smithy Smith Smiths</td>
-                                <td>Ecotrip in Downtown Vancouver</td>
-                                <td>Surrey</td>
-                                <td>15th May, 10:00AM (8 Hours)</td>
-                                <td>7/10</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>    
-            </div>
+                        <tr>
+                            <td>35</td>
+                            <td>John Dough</td>
+                            <td>Cleanup around Metropolis Mall</td>
+                            <td>Metrotown</td>
+                            <td>14th May, 10:00AM (5 Hours)</td>
+                            <td>8/12</td>
+                        </tr>
 
-            <div id="bottom">
-                <img id="prevPageBtn" class="triangle" src="https://www.shareicon.net/data/512x512/2016/06/11/779269_arrows_512x512.png" alt="Prev. Page Button">
-                <p>1-3 of 3</p>
-                <img id="nextPageBtn" class="triangle" src="https://www.shareicon.net/data/512x512/2016/06/11/779269_arrows_512x512.png" alt="Next Page Button">
+                        <tr>
+                            <td>36</td>
+                            <td>Jannette Doh</td>
+                            <td>Clean up at South-Arm</td>
+                            <td>Richmond</td>
+                            <td>14th May, 11:00AM (6 Hours)</td>
+                            <td>2/8</td>
+                        </tr>
+
+                        <tr>
+                            <td>37</td>
+                            <td>Bobby Bob Bobbleso</td>
+                            <td>Cleaning BCIT Parking Lots</td>
+                            <td>BCIT Burnaby</td>
+                            <td>19th May, 1:00PM (4 Hours)</td>
+                            <td>6/8</td>
+                        </tr>
+
+                        <tr>
+                            <td>38</td>
+                            <td>Smithy Smith Smiths</td>
+                            <td>Ecotrip in Downtown Vancouver</td>
+                            <td>Surrey</td>
+                            <td>15th May, 10:00AM (8 Hours)</td>
+                            <td>7/10</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="modal fade" id="myModal" role="dialog" style="margin:0px;">
-            <div class="modal-content"> 
-                <div class="container text-center" style="width:100%;">
-                    <h2 style="margin-top: 50px">Welcome to event creation!</h2><hr><br>
-                        
-                    <div class="col-sm-12 text-center">
-                        <div class="col-sm-3 text-right">
-                            <img class="imgTotal" src="https://cdn2.iconfinder.com/data/icons/love-nature/600/green-Leaves-nature-leaf-tree-garden-environnement-512.png" width="30px" height="30px">
+
+        <div id="bottom">
+            <img id="prevPageBtn" class="triangle"
+                src="https://www.shareicon.net/data/512x512/2016/06/11/779269_arrows_512x512.png"
+                alt="Prev. Page Button">
+            <p>1-3 of 3</p>
+            <img id="nextPageBtn" class="triangle"
+                src="https://www.shareicon.net/data/512x512/2016/06/11/779269_arrows_512x512.png"
+                alt="Next Page Button">
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog" style="margin:0px;">
+        <div class="modal-content">
+            <div class="container text-center" style="width:100%;">
+                <h2 style="margin-top: 50px">Welcome to event creation!</h2>
+                <hr><br>
+
+                <div class="col-sm-12 text-center">
+                    <div class="col-sm-3 text-right">
+                        <img class="imgTotal"
+                            src="https://cdn2.iconfinder.com/data/icons/love-nature/600/green-Leaves-nature-leaf-tree-garden-environnement-512.png"
+                            width="30px" height="30px">
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">Title</h4>
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <input type="text" name="title" style="height: 30px;">
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center" style="margin-top: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <img src="https://image.flaticon.com/icons/svg/67/67347.svg" width="30px" height="30px">
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">Location</h4>
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <input type="text" name="where" style="height: 30px;">
+                    </div>
+                </div>
+                <div class="col-sm-12 text-left" style="margin-top: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <img src="https://www0.sun.ac.za/helderberg/wp-content/uploads/2017/03/calendar.png"
+                            width="30px" height="30px">
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">Date</h4>
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <div id="box1">
+                            <select name="month">
+                                <option value="month"> Month</option>
+                                <option value="jan"> Jan</option>
+                                <option value="feb"> Feb</option>
+                            </select>
+                            <select name="day">
+                                <option value="day"> Day</option>
+                            </select>
+                            <select name="year">
+                                <option value="year"> Year</option>
+                            </select>
+                            <br>
                         </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">Title</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                            <input type="text" name="title"  style="height: 30px;">
+                        <div id="box2">
+                            <select name="hour">
+                                <option value="hour"> HH</option>
+                                <option value="jan"> Jan</option>
+                                <option value="feb"> Feb</option>
+                            </select>
+                            <select name="MM">
+                                <option value="MM"> MM
+                                <option value="00">00</option>
+                                <option value="15">15</option>
+                                <option value="30">30</option>
+                                <option value="45">45</option>
+                                </option>
+                            </select>
+                            <select name="AMPM">
+                                <option value="AMPM"> AM-PM
+                                <option value="am">AM</option>
+                                <option value="pm">PM</option>
+                                </option>
+                            </select><br>
                         </div>
                     </div>
-                    <div class="col-sm-12 text-center" style="margin-top: 20px;">
-                        <div class="col-sm-3 text-right">
-                            <img src="https://image.flaticon.com/icons/svg/67/67347.svg" width="30px" height="30px">
-                        </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">Location</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                            <input type="text" name="where"  style="height: 30px;">
-                        </div>   
-                    </div> 
-                    <div class="col-sm-12 text-left" style="margin-top: 20px;">
-                        <div class="col-sm-3 text-right">
-                            <img src="https://www0.sun.ac.za/helderberg/wp-content/uploads/2017/03/calendar.png"width="30px" height="30px">
-                        </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">Date</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                            <div id="box1">
-                                <select name="month">
-                                    <option value="month"> Month</option>
-                                    <option value="jan"> Jan</option>
-                                    <option value="feb"> Feb</option>
-                                </select>
-                                <select name="day">
-                                    <option value="day"> Day</option>
-                                </select>
-                                <select name="year">
-                                    <option value="year"> Year</option>
-                                </select>
-                                    <br>
-                            </div>
-                            <div id="box2">
-                                <select name="hour">
-                                    <option value="hour"> HH</option>
-                                    <option value="jan"> Jan</option>
-                                    <option value="feb"> Feb</option>
-                                </select>
-                                <select name="MM">
-                                    <option value="MM"> MM
-                                    <option value="00">00</option>
-                                    <option value="15">15</option>
-                                    <option value="30">30</option>
-                                    <option value="45">45</option>
-                                    </option>
-                                    </select>
-                                <select name="AMPM">
-                                    <option value="AMPM"> AM-PM
-                                    <option value="am">AM</option>
-                                    <option value="pm">PM</option>
-                                    </option>
-                                </select><br>
-                            </div>
-                        </div>   
+                </div>
+                <div class="col-sm-12 text-left" style="margin-top: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <img src="https://image.flaticon.com/icons/png/512/33/33308.png""width=" 30px" height="30px">
                     </div>
-                    <div class="col-sm-12 text-left" style="margin-top: 20px;">
-                        <div class="col-sm-3 text-right">
-                            <img src="https://image.flaticon.com/icons/png/512/33/33308.png""width="30px" height="30px">
-                        </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">People</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                            <input type="text" name="number" style="height: 30px; margin-top:5px;" ><br>
-                        </div>   
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">People</h4>
                     </div>
-                    <div class="col-sm-12 text-left" style="margin-top: 20px;">
-                        <div class="col-sm-3 text-right">
-                            <img src="https://www.eastchapelhillobserver.com/wp-content/uploads/2015/02/black-pencil-vector-KTnez4BEc.png" "width="30px" height="30px">
-                        </div>
-                        <div class="col-sm-3 text-center">
-                            <h4 class="category">Description</h4>
-                        </div>
-                        <div class="col-sm-6 text-left">
-                            <textarea cols="25" rows="4" style= " margin-top:5px;" ></textarea>
-                        </div>   
-                    </div>    
+                    <div class="col-sm-6 text-left">
+                        <input type="text" name="number" style="height: 30px; margin-top:5px;"><br>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-left" style="margin-top: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <img src="https://www.eastchapelhillobserver.com/wp-content/uploads/2015/02/black-pencil-vector-KTnez4BEc.png" "width="
+                            30px" height="30px">
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <h4 class="category">Description</h4>
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <textarea cols="25" rows="4" style=" margin-top:5px;"></textarea>
+                    </div>
+                </div>
                 <div class="col-sm-12" text-center style="margin-top: 20px;">
                     <button type='submit' class="btn btn-info btn-lg">Create</button>
                     <button type='submit' id="buttonClose" class="btn btn-info btn-lg">Close</button>
-                </div>        
+                </div>
             </div>
         </div>
         <script>
-            $(document).ready(function() {
-                $('#buttonClose').click(function() {
+            $(document).ready(function () {
+                $('#buttonClose').click(function () {
                     $('#myModal').fadeOut();
                     $('.modal-backdrop').fadeOut();
                 });
             });
         </script>
 
-    </body>
+</body>
+
 </html>

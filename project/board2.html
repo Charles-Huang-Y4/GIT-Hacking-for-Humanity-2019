@@ -1,137 +1,182 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
 
-        </title>
-        <style>
-            .category {
-                font-weight: bold;
-                display:inline-block;
-                margin-left:10px;
-                margin-bottom:30px;
-            }
-            #pickTrash {
-                width:90%;
-                height:50%;
-                margin-bottom:50px;
-            }
-            .pic {
-                margin-top:10px;
-            }
-            li a{
-                margin-left:50px;
-                line-height:55px;
-            }
-            #back {
-                color:white;
-            }
-            
+<head>
+    <title>Board2</title>
+    <meta charset="utf-8">
 
-        </style>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-    </head>
-    <body>
-        <nav class="navbar navbar-default" style="height: 85px;">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                <a class="navbar-brand" href="#">ECO-FRIENDLY</a>
-                </div>
-                <ul class="nav navbar-nav navbar-center">
-                    <li><a href="#" style="line-height: 55px">Home</a></li>
-                    <li><a href="board.html" style="line-height: 55px">Board</a></li>
-                    <li><a href="result.html" style="line-height: 55px">Result</a></li>
-                    <li><a href="#" style="line-height: 55px">Signup</a></li>
-                </ul>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+        body {
+            font-family: Montserrat,Arial, Helvetica, sans-serif 
+        }
+        .category {
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+            margin-bottom: 30px;
+            letter-spacing: 1.5px;
+        }
+
+        #pickTrash {
+            width: 90%;
+            height: 50%;
+            margin-bottom: 50px;
+        }
+
+        .pic {
+            margin-top: 10px;
+        }
+
+        .navbar-nav li a {
+            line-height: 55px;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+        }
+
+        #back {
+            color: white;
+        }
+
+        .nav-item {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .navbar-brand {
+            line-height: 55px;
+            letter-spacing: 5px;
+        }
+
+        .text-center h2 {
+            letter-spacing: 2px;
+            font-weight: 400;
+            margin-bottom: 100px;
+        }
+
+        .descriptionText h4 {
+            font-weight: 350;
+            color: gray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default" style="height: 85px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="font-size: 22pt;" href="#">EcoSave</a>
             </div>
-        </nav>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="board.html">Board</a></li>
+                <li class="nav-item"><a href="result.html">Result</a></li>
+                <li class="nav-item"><a href="#">Signup</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="container text-center">
-            <h2>Participate in Eco-Trip!</h2><hr><br>
-            <div class="col-sm-7 text-left">     
-                <div class="col-sm-12 text-left">
-                    <div id="category"class="col-sm-1 text-left">
-                        <img class="pic" src="pic/laeves.jpg" style="width: 20px">
-                    </div>
-                    <div id="category"class="col-sm-4 text-left">
-                        <h4 class="category">Title</h4><br>
-                    </div>
-                    <div class="col-sm-7 text-left">
-                        <h4>Anyone to work at dt?</h4><br>
-                    </div>
+    <div class="container text-center">
+        <h2>Participate in Eco-Save!</h2>
+        <br>
+        <div class="col-sm-7 text-left">
+            <div class="col-sm-12 text-left">
+                <div id="category" class="col-sm-1 text-left">
+                    <img class="pic" src="pic/laeves.jpg" style="width: 20px">
                 </div>
-                <div class="col-sm-12 text-left">
-                    <div id="category"class="col-sm-1 text-left">
-                        <img class="pic" src="pic/pencil.jpg" style="width: 20px">
-                    </div>
-                    <div id="category"class="col-sm-4 text-left">
-                        <h4 class="category">Organizer</h4><br>
-                    </div>
-                    <div class="col-sm-7 text-left">
-                        <h4>afs1234</h4><br>
-                    </div>
+                <div id="category" class="col-sm-4 text-left">
+                    <h4 class="category">Title</h4><br>
                 </div>
-                <div class="col-sm-12 text-left">
-                    <div id="category"class="col-sm-1 text-left">
-                        <img class="pic" src="pic/place.jpg" style="width: 20px">
-                    </div>
-                    <div id="category"class="col-sm-4 text-left">
-                        <h4 class="category">Location</h4><br>
-                    </div>
-                    <div class="col-sm-7 text-left">
-                        <h4>Granville street, robson street</h4><br>
-                    </div>
-                </div>
-                <div class="col-sm-12 text-left">
-                    <div id="category"class="col-sm-1 text-left">
-                        <img class="pic" src="pic/calendar.jpg" style="width: 20px">
-                    </div>
-                    <div id="category"class="col-sm-4 text-left">
-                        <h4 class="category">Date</h4><br>
-                    </div>
-                    <div class="col-sm-7 text-left">
-                        <h4>1/Jun 13:00 (2 hours)</h4><br>
-                    </div>
-                </div>
-                <div class="col-sm-12 text-left">
-                    <div id="category"class="col-sm-1 text-left">
-                        <img class="pic" src="pic/people.jpg" style="width: 20px">
-                    </div>
-                    <div id="category"class="col-sm-4 text-left">
-                        <h4 class="category">Volunteers</h4><br>
-                    </div>
-                    <div class="col-sm-7 text-left">
-                        <h4>3/6</h4><br>
-                    </div>
-                </div>
-                <div class="col-sm-12 text-left">
-                    <div id="category"class="col-sm-1 text-left">
-                        <img class="pic" src="pic/pencil.jpg" style="width: 20px">
-                    </div>
-                    <div id="category"class="col-sm-4 text-left">
-                        <h4 class="category">Description</h4><br>
-                    </div>
-                    <div class="col-sm-7 text-left">
-                        <h4>I’m planning to pick up some trashes on downtown. It is from granville street and westgeorgia street. 
-                            Let’s do volunteer work and become friends!</h4><br>
-                    </div>
+                <div class="col-sm-7 text-left descriptionText">
+                    <h4>Anyone to work at dt?</h4><br>
                 </div>
             </div>
-            <div class="col-sm-5">
-                    <img id="pickTrash" src="pic/pickTrash.jpg" class="img-thumbnail" alt="Cinque Terre">
-                    <br><br>
-                    
-                    <button type="button" class="btn btn-primary btn-lg">Join!</button>
-                    <button type="button" class="btn btn-primary btn-lg"><a id="back" href=board.html>Back</a></button>
-                    
+            <div class="col-sm-12 text-left">
+                <div id="category" class="col-sm-1 text-left">
+                    <img class="pic" src="pic/pencil.jpg" style="width: 20px">
                 </div>
-                
+                <div id="category" class="col-sm-4 text-left">
+                    <h4 class="category">Organizer</h4><br>
+                </div>
+                <div class="col-sm-7 text-left descriptionText">
+                    <h4>afs1234</h4><br>
+                </div>
+            </div>
+            <div class="col-sm-12 text-left">
+                <div id="category" class="col-sm-1 text-left">
+                    <img class="pic" src="pic/place.jpg" style="width: 20px">
+                </div>
+                <div id="category" class="col-sm-4 text-left">
+                    <h4 class="category">Location</h4><br>
+                </div>
+                <div class="col-sm-7 text-left descriptionText">
+                    <h4>Granville street, robson street</h4><br>
+                </div>
+            </div>
+            <div class="col-sm-12 text-left">
+                <div id="category" class="col-sm-1 text-left">
+                    <img class="pic" src="pic/calendar.jpg" style="width: 20px">
+                </div>
+                <div id="category" class="col-sm-4 text-left">
+                    <h4 class="category">Date</h4><br>
+                </div>
+                <div class="col-sm-7 text-left descriptionText">
+                    <h4>1/Jun 13:00 (2 hours)</h4><br>
+                </div>
+            </div>
+            <div class="col-sm-12 text-left">
+                <div id="category" class="col-sm-1 text-left">
+                    <img class="pic" src="pic/people.jpg" style="width: 20px">
+                </div>
+                <div id="category" class="col-sm-4 text-left">
+                    <h4 class="category">Volunteers</h4><br>
+                </div>
+                <div class="col-sm-7 text-left descriptionText">
+                    <h4>3/6</h4><br>
+                </div>
+            </div>
+            <div class="col-sm-12 text-left">
+                <div id="category" class="col-sm-1 text-left">
+                    <img class="pic" src="pic/pencil.jpg" style="width: 20px">
+                </div>
+                <div id="category" class="col-sm-4 text-left">
+                    <h4 class="category">Description</h4><br>
+                </div>
+                <div class="col-sm-7 text-left descriptionText">
+                    <h4>I’m planning to pick up some trashes on downtown. It is from granville street and westgeorgia
+                        street.
+                        Let’s do volunteer work and become friends!</h4><br>
+                </div>
             </div>
         </div>
+        <div class="col-sm-5">
+            <img id="pickTrash" src="pic/pickTrash.jpg" class="img-thumbnail" alt="Cinque Terre">
+            <br><br>
 
-                
+            <button type="button" class="btn btn-primary btn-lg">Join!</button>
+            <button type="button" class="btn btn-primary btn-lg"><a id="back" href=board.html>Back</a></button>
 
-    </body>
+        </div>
+
+    </div>
+    </div>
+
+
+
+</body>
+
 </html>
